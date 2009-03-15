@@ -1,0 +1,6 @@
+<h1><%= @job.name %></h1>
+<p><%= @job.status %>:<%= h @job.locked_queue_id.inspect %>, <%= h @job.created_at %></p>
+<h3>data</h3>
+<pre><%= h @job.data %></pre>
+<h3>details</h3>
+<pre><%= h @job.details %></pre>

@@ -1,0 +1,56 @@
+jobs_001:
+  status: pending
+  name: magick
+  id: "1"
+  attempts: "0"
+  locked_queue_id:
+  data: '{"original_filename":"tests/fixtures/photo.jpg","modified_filename":"tests/fixtures/photo-thumb.jpg", "operation":"resize", "rows":64, "cols":64}'
+  created_at: 2008-12-16 19:49:49
+jobs_002:
+  status: pending
+  name: test
+  id: "2"
+  attempts: "0"
+  locked_queue_id:
+  data:
+  created_at: 2008-12-16 19:49:49
+jobs_003:
+  status: pending
+  name: test
+  id: "3"
+  attempts: "0"
+  locked_queue_id:
+  data:
+  created_at: 2008-12-12 18:02:35
+jobs_004:
+  status: pending
+  name: test
+  id: "4"
+  attempts: "0"
+  locked_queue_id:
+  data:
+  created_at: 2008-12-12 18:02:35
+jobs_005:
+  status: pending
+  name: ffmpeg
+  id: "5"
+  attempts: "0"
+  locked_queue_id:
+  data: '{"original_filename":"tests/fixtures/sample.mov","modified_filename":"tests/fixtures/sample.flv", "short_name":"flv", "mime_type":"application/x-shockwave-flash"}'
+  created_at: 2008-12-16 19:49:49
+jobs_006:
+  status: pending
+  name: lua
+  id: "6"
+  attempts: "0"
+  locked_queue_id:
+  data: '{"filename":"tests/fixtures/test1.lua","options":"message"}'
+  created_at: 2008-12-16 19:49:49
+jobs_007:
+  status: pending
+  name: run
+  id: "7"
+  attempts: "0"
+  locked_queue_id:
+  data: '{"command":"/usr/bin/touch tests/fixtures/simple.test"}'
+  created_at: 2009-1-28 19:49:49

@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"/>
+</head>
+<body>
+  <!--[if IE]><div class="ie"><![endif]-->
+    <!--[if lt IE 7.]><div class="ie6"><![endif]-->
+      <div class="container">
+        <div class="span-24">
+          <h1>Job Queue</h1>
+          <div class="prepend-1 span-4">
+            <a href="<%= url(:all_jobs) %>">All Jobs</a>
+          </div>
+          <div class="span-4">
+            <a href="<%= url(:new_job) %>">New Job</a>
+          </div>
+        </div>
+        <div class="span-24">
+          <%= catch_content :for_layout %>
+        </div>
+      </div>
+    <!--[if lt IE 7.]></div><![endif]-->
+  <!--[if IE]></div><![endif]-->
+</body>
+</html>

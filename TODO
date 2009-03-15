@@ -1,0 +1,32 @@
+Workers:
+* flv worker FFMPEG -> http://www.dranger.com/ffmpeg/tutorial01.html, ffmpeg/output_example.c, and http://code.google.com/p/ffmpegthumbnailer/
+X image thumbnail ImageMagick
+* Ruby Job -- difficulty here and possibly with python will be concurrency/sandboxing
+* Python Job
+X Lua Job
+* Javascript V8 ? -- difficulty here will be 64bit compatiblity, near impossible
+
+Adapters:
+* postgres
+* sqlite
+* oracle?
+* firebird?
+
+Server:
+X add file logging
+* check for SIGBUS errors
+* http frontend ( use lua? c? or other? )
+  - job progress  (high performance)
+  - job statuses (admin interface)
+  - server utilization (admin interface)
+
+Job Modules:
+* Should be built and configured as independent modules e.g. each should have it's own configure script?
+X Exec Job - run any command line tool
+* Akismet Spam checking in Lua
+* FFMPEG popen in Lua
+* Lua sphinx commands rotating the indices
+
+Packaging:
+* fedora rpm
+* mac ports

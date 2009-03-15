@@ -1,0 +1,846 @@
+2009-02-08 21:34  taf2
+
+	* rvices/workq/configure.ac: generate the docs
+
+2009-02-08 15:21  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/src/Makefile.am,
+	  rvices/workq/tests/Makefile.am: update build to create a usable
+	  dist
+
+2009-02-07 20:07  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/README,
+	  rvices/workq/bootstrap.sh, rvices/workq/configure,
+	  rvices/workq/configure.ac, rvices/workq/docs,
+	  rvices/workq/docs/Makefile.am, rvices/workq/docs/reference,
+	  rvices/workq/docs/reference/Makefile.am,
+	  rvices/workq/docs/reference/modules,
+	  rvices/workq/docs/reference/modules/Makefile.am,
+	  rvices/workq/docs/reference/src,
+	  rvices/workq/docs/reference/src/Makefile.am,
+	  rvices/workq/m4/gtk-doc.m4, rvices/workq/src/server.cc,
+	  rvices/workq/workq.cc, rvices/workq/workq.h: work on integrating
+	  gtk-doc
+
+2009-02-04 17:54  taf2
+
+	* rvices/workq/config/jobs.yml, rvices/workq/configure,
+	  rvices/workq/src/server.cc, rvices/workq/src/server.h,
+	  rvices/workq/src/worker.cc, rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/workq.cc: cleanup event handling, move it all into
+	  the libev event loops
+
+2009-02-03 00:47  taf2
+
+	* rvices/workq/TODO, rvices/workq/configure.ac: remove old rpm
+	  approach
+	  update todo
+
+2009-02-02 02:09  taf2
+
+	* rvices/workq/modules/run_job.cc: reimplement to grab status and
+	  std[out|err]
+
+2009-01-31 20:52  taf2
+
+	* rvices/workq/README, rvices/workq/TODO, rvices/workq/configure:
+	  updated README
+
+2009-01-31 20:43  taf2
+
+	* rvices/workq/aclocal.m4: remove it
+
+2009-01-31 20:37  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/modules/Makefile.am,
+	  rvices/workq/src/Makefile.am, rvices/workq/tests/Makefile.am,
+	  rvices/workq/workq.spec: rpm builds!
+
+2009-01-31 19:39  taf2
+
+	* rvices/workq/ChangeLog, rvices/workq/Makefile.am,
+	  rvices/workq/README, rvices/workq/aclocal.m4,
+	  rvices/workq/config/jobs.yml, rvices/workq/configure,
+	  rvices/workq/configure.ac, rvices/workq/src/worker.cc,
+	  rvices/workq/tests/Makefile.am,
+	  rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/tests/fixtures/test1.lua, rvices/workq/workq.cc,
+	  rvices/workq/workq.spec: readme cleanup
+	  add rpm spec
+
+2009-01-30 18:49  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/config/jobs.yml,
+	  rvices/workq/src/server.cc, rvices/workq/src/server.h,
+	  rvices/workq/src/worker.cc, rvices/workq/src/worker.h,
+	  rvices/workq/workq.cc: split out creating of workers
+	  add a watcher to detect when a worker crashes, paving the way to
+	  have the server restart it's dead worker
+
+2009-01-30 15:08  taf2
+
+	* rvices/workq/ChangeLog, rvices/workq/Makefile.am,
+	  rvices/workq/configure, rvices/workq/configure.ac: update version
+	  string
+
+2009-01-30 15:04  taf2
+
+	* rvices/workq/modules/lua_job.cc,
+	  rvices/workq/tests/fixtures/test1.lua: use wq_execute instead of
+	  execute to avoid collisions
+
+2009-01-30 15:03  taf2
+
+	* rvices/workq/config/jobs.yml, rvices/workq/modules/lua_job.cc,
+	  rvices/workq/modules/lua_job.h, rvices/workq/modules/run_job.cc,
+	  rvices/workq/tests/fixtures/jobs.yml,
+	  rvices/workq/tests/fixtures/test1.lua: update lua jobs to run in
+	  an execute method
+
+2009-01-28 18:58  taf2
+
+	* rvices/workq/ChangeLog, rvices/workq/Makefile.am: update changlog
+
+2009-01-28 18:46  taf2
+
+	* rvices/workq/COPYING, rvices/workq/Makefile.am,
+	  rvices/workq/TODO, rvices/workq/configure,
+	  rvices/workq/configure.ac, rvices/workq/m4/ax_add_am_macro.m4,
+	  rvices/workq/m4/ax_add_recursive_am_macro.m4,
+	  rvices/workq/m4/ax_am_macros.m4,
+	  rvices/workq/m4/ax_append_to_file.m4,
+	  rvices/workq/m4/ax_dist_rpm.m4,
+	  rvices/workq/m4/ax_file_escapes.m4,
+	  rvices/workq/m4/ax_install_files.m4,
+	  rvices/workq/m4/ax_print_to_file.m4,
+	  rvices/workq/m4/ax_upload.m4, rvices/workq/spec.tmpl.in,
+	  rvices/workq/tests/Makefile.am: work on adding packaging using
+	  rpm
+
+2009-01-28 17:42  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/tests/Makefile.am:
+	  organize makefile
+
+2009-01-28 17:37  taf2
+
+	* rvices/workq/modules/Makefile.am: add missing headers
+
+2009-01-28 16:37  taf2
+
+	* rvices/workq/TODO, rvices/workq/config/jobs.yml,
+	  rvices/workq/workq.cc: * write the pid file
+	  * little better log handling
+
+2009-01-28 15:41  taf2
+
+	* rvices/workq/tests/fixtures/jobs.yml: more generic
+
+2009-01-28 15:38  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/modules/run_job.cc,
+	  rvices/workq/tests/Makefile.am,
+	  rvices/workq/tests/fixtures/jobs.yml,
+	  rvices/workq/tests/lua_job_test.cc,
+	  rvices/workq/tests/magick_job_test.cc,
+	  rvices/workq/tests/mock_adaptor_test.cc,
+	  rvices/workq/tests/run_job_test.cc, rvices/workq/tests/testlib.h:
+	  add support for running command
+
+2009-01-28 15:21  taf2
+
+	* rvices/workq/config/jobs.yml, rvices/workq/modules/Makefile.am,
+	  rvices/workq/modules/lua_job.cc, rvices/workq/modules/lua_job.h,
+	  rvices/workq/modules/run_job.cc, rvices/workq/modules/run_job.h:
+	  add support for a command line runner
+
+2009-01-28 14:52  taf2
+
+	* rvices/workq/src/server.cc: allow the signal sometime to be
+	  received by the child process
+
+2009-01-27 23:26  taf2
+
+	* rvices/workq/src/adaptor.h, rvices/workq/src/mysql_adaptor.cc,
+	  rvices/workq/src/mysql_adaptor.h, rvices/workq/src/worker.cc,
+	  rvices/workq/src/worker.h, rvices/workq/tests/message.rb,
+	  rvices/workq/tests/mock_sql_adaptor.cc: concurreny issues fixed
+	  thanks to tml and owen on #gtk+ for explaining how memory works
+
+2009-01-27 17:27  taf2
+
+	* rvices/workq/TODO, rvices/workq/config/jobs.yml,
+	  rvices/workq/src/job.cc, rvices/workq/src/job.h,
+	  rvices/workq/src/mysql_adaptor.cc, rvices/workq/src/worker.cc,
+	  rvices/workq/src/worker.h, rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/tests/ffmpeg_job_test.cc,
+	  rvices/workq/tests/fixtures/jobs.yml,
+	  rvices/workq/tests/lua_job_test.cc,
+	  rvices/workq/tests/magick_job_test.cc,
+	  rvices/workq/tests/message.rb,
+	  rvices/workq/tests/mock_adaptor_test.cc,
+	  rvices/workq/tests/mock_sql_adaptor.cc,
+	  rvices/workq/tests/work_queue_test.cc: fix concurrency issues,
+	  avoid scheduling the same jobs
+	  clean up worker scheduling code
+
+2009-01-25 18:11  taf2
+
+	* rvices/workq/TODO: update TODO
+
+2009-01-25 14:15  taf2
+
+	* rvices/workq/src/server.cc, rvices/workq/src/worker.cc,
+	  rvices/workq/src/worker.h, rvices/workq/tests/message.rb,
+	  rvices/workq/tests/work_queue_test.cc: clean up exit
+
+2009-01-25 14:00  taf2
+
+	* rvices/workq/src/server.cc: free after signaling
+
+2009-01-25 13:59  taf2
+
+	* rvices/workq/src/worker.cc: join thread
+
+2009-01-24 22:17  taf2
+
+	* rvices/workq/config/jobs.yml, rvices/workq/src/server.cc,
+	  rvices/workq/src/server.h, rvices/workq/tests/message.rb: *
+	  implement server timeout, to catch jobs missed by UDP protocol
+	  * add min/max idle_timeout with scaling
+
+2009-01-24 17:32  taf2
+
+	* rvices/workq/config/jobs.yml, rvices/workq/modules/magick_job.cc,
+	  rvices/workq/src/mysql_adaptor.cc,
+	  rvices/workq/src/mysql_adaptor.h, rvices/workq/src/server.cc,
+	  rvices/workq/src/server.h, rvices/workq/src/worker.h,
+	  rvices/workq/tests/config/jobs.yml: cleanup
+	  fix bugs in 64 bit integer for mysql
+
+2009-01-24 15:47  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/config/jobs.yml,
+	  rvices/workq/src/server.cc, rvices/workq/src/server.h,
+	  rvices/workq/tests/message.rb, rvices/workq/workq.cc: add idle
+	  timer, to check for more work
+	  fix bug in how we were linking to static libary
+
+2009-01-24 02:30  taf2
+
+	* rvices/workq/config/jobs.yml, rvices/workq/message.rb,
+	  rvices/workq/modules/magick_job.cc, rvices/workq/src/worker.cc,
+	  rvices/workq/tests/message.rb: run a real test
+
+2009-01-24 02:01  taf2
+
+	* rvices/workq/configure: update
+
+2009-01-24 02:00  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/configure,
+	  rvices/workq/tests/Makefile.am: enable test
+
+2009-01-24 01:58  taf2
+
+	* rvices/workq/configure.ac, rvices/workq/modules/Makefile.am:
+	  compile ffmpeg module start working on it again
+
+2009-01-23 18:14  taf2
+
+	* rvices/workq/modules/lua_job.cc,
+	  rvices/workq/modules/magick_job.cc: use g_critical
+
+2009-01-23 18:12  taf2
+
+	* rvices/workq/modules/lua_job.cc, rvices/workq/src,
+	  rvices/workq/tests/fixtures,
+	  rvices/workq/tests/fixtures/test1.lua,
+	  rvices/workq/tests/lua_job_test.cc: hide some compiled files
+	  have lua generate a date to test it's output
+
+2009-01-23 18:07  taf2
+
+	* rvices/workq/modules/lua_job.cc: return true
+
+2009-01-22 22:08  taf2
+
+	* rvices/workq/modules/ffmpeg_job.cc,
+	  rvices/workq/modules/lua_job.cc,
+	  rvices/workq/modules/magick_job.cc, rvices/workq/src/settings.cc,
+	  rvices/workq/src/worker.cc, rvices/workq/tests/fixtures/jobs.yml,
+	  rvices/workq/tests/fixtures/test1.lua,
+	  rvices/workq/tests/lua_job_test.cc,
+	  rvices/workq/tests/testlib.cc: lua ran holy crap
+
+2009-01-22 21:40  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/config/jobs.yml,
+	  rvices/workq/configure, rvices/workq/configure.ac,
+	  rvices/workq/modules/Makefile.am,
+	  rvices/workq/modules/ffmpeg_job.cc,
+	  rvices/workq/modules/lua_job.cc, rvices/workq/modules/lua_job.h,
+	  rvices/workq/src/Makefile.am, rvices/workq/src/logger.cc,
+	  rvices/workq/src/logger.h, rvices/workq/tests/Makefile.am,
+	  rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/tests/fixtures/jobs.yml,
+	  rvices/workq/tests/lua_job_test.cc,
+	  rvices/workq/tests/mock_adaptor_test.cc,
+	  rvices/workq/tests/mock_sql_adaptor.cc: disabling ffmpeg job
+	  adding lua job
+
+2009-01-21 18:01  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/tests/Makefile.am,
+	  rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/tests/ffmpeg_job_test.cc,
+	  rvices/workq/tests/fixtures/jobs.yml,
+	  rvices/workq/tests/mock_sql_adaptor.cc: fix up test make files
+	  fix up fixtures to load all entries
+
+2009-01-21 17:48  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/configure,
+	  rvices/workq/src/Makefile.am, rvices/workq/src/worker.cc,
+	  rvices/workq/tests/Makefile.am,
+	  rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/tests/mock_adaptor_test.cc,
+	  rvices/workq/tests/mock_sql_adaptor.h,
+	  rvices/workq/tests/work_queue_test.cc: dynamically load core
+	  library, much faster to develop... will have to statically link
+	  to release
+
+2009-01-21 17:11  taf2
+
+	* rvices/workq/tests/ffmpeg_job_test.cc: add the test
+
+2009-01-21 17:09  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/config/jobs.yml,
+	  rvices/workq/configure, rvices/workq/configure.ac,
+	  rvices/workq/modules/ffmpeg_job.cc, rvices/workq/src/server.cc,
+	  rvices/workq/tests/Makefile.am,
+	  rvices/workq/tests/fixtures/jobs.yml,
+	  rvices/workq/tests/work_queue_test.cc: wire in ffmpeg tests, this
+	  breaks other tests... cause of the fixture changes
+
+2009-01-19 22:57  taf2
+
+	* rvices/workq/src/server.cc: use a pipe to block parent until
+	  worker is up and running
+
+2009-01-19 22:45  taf2
+
+	* rvices/workq/modules: hide it
+
+2009-01-19 22:43  taf2
+
+	* rvices/workq/src/server.cc: use binpath
+
+2009-01-19 22:41  taf2
+
+	* rvices/workq/configure, rvices/workq/configure.ac,
+	  rvices/workq/modules/Makefile.am, rvices/workq/src/server.cc,
+	  rvices/workq/src/settings.cc, rvices/workq/src/settings.h,
+	  rvices/workq/tests/Makefile.am,
+	  rvices/workq/tests/magick_job_test.cc,
+	  rvices/workq/tests/mock_adaptor_test.cc,
+	  rvices/workq/tests/mock_sql_adaptor.h,
+	  rvices/workq/tests/mysql_test.cc,
+	  rvices/workq/tests/settings_test.cc,
+	  rvices/workq/tests/work_queue_test.cc, rvices/workq/workq.cc:
+	  work in dynamic loading, add binpath to settings
+
+2009-01-19 20:07  taf2
+
+	* rvices/workq/modules: ingore'em
+
+2009-01-19 20:06  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/configure,
+	  rvices/workq/configure.ac, rvices/workq/core,
+	  rvices/workq/ffmpeg_job.cc, rvices/workq/ffmpeg_job.h,
+	  rvices/workq/magick_job.cc, rvices/workq/magick_job.h,
+	  rvices/workq/modules, rvices/workq/modules/Makefile.am,
+	  rvices/workq/modules/ffmpeg_job.cc,
+	  rvices/workq/modules/ffmpeg_job.h,
+	  rvices/workq/modules/magick_job.cc,
+	  rvices/workq/modules/magick_job.h, rvices/workq/src,
+	  rvices/workq/tests/Makefile.am,
+	  rvices/workq/tests/config/jobs.yml: split modules out into own
+	  sub folder
+
+2009-01-19 19:59  taf2
+
+	* rvices/workq, rvices/workq/core, rvices/workq/tests: ignore the
+	  generated tifles
+
+2009-01-19 19:58  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/adaptor.cc,
+	  rvices/workq/adaptor.h, rvices/workq/configure,
+	  rvices/workq/configure.ac, rvices/workq/core,
+	  rvices/workq/core/Makefile.am, rvices/workq/core/adaptor.cc,
+	  rvices/workq/core/adaptor.h, rvices/workq/core/job.cc,
+	  rvices/workq/core/job.h, rvices/workq/core/logger.cc,
+	  rvices/workq/core/logger.h, rvices/workq/core/mysql_adaptor.cc,
+	  rvices/workq/core/mysql_adaptor.h, rvices/workq/core/pstring.cc,
+	  rvices/workq/core/pstring.h, rvices/workq/core/server.cc,
+	  rvices/workq/core/server.h, rvices/workq/core/settings.cc,
+	  rvices/workq/core/settings.h, rvices/workq/core/util.cc,
+	  rvices/workq/core/util.h, rvices/workq/core/worker.cc,
+	  rvices/workq/core/worker.h, rvices/workq/job.cc,
+	  rvices/workq/job.h, rvices/workq/json, rvices/workq/logger.cc,
+	  rvices/workq/logger.h, rvices/workq/mysql_adaptor.cc,
+	  rvices/workq/mysql_adaptor.h, rvices/workq/pstring.cc,
+	  rvices/workq/pstring.h, rvices/workq/server.cc,
+	  rvices/workq/server.h, rvices/workq/settings.cc,
+	  rvices/workq/settings.h, rvices/workq/tests/Makefile.am,
+	  rvices/workq/tests/config/jobs.yml, rvices/workq/tests/fixtures,
+	  rvices/workq/util.cc, rvices/workq/util.h,
+	  rvices/workq/worker.cc, rvices/workq/worker.h: added a core
+	  folder for core libs
+
+2009-01-19 19:37  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/tests/Makefile.am: rework
+	  conditional tests folder to use a shared archive
+
+2009-01-19 18:01  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/configure,
+	  rvices/workq/configure.ac, rvices/workq/settings.cc,
+	  rvices/workq/tests, rvices/workq/tests/Makefile.am,
+	  rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/tests/mock_adaptor_test.cc,
+	  rvices/workq/tests/mock_sql_adaptor.h,
+	  rvices/workq/tests/settings_test.cc,
+	  rvices/workq/tests/testlib.cc, rvices/workq/tests/testlib.h: move
+	  tests into sub folder
+
+2009-01-19 17:38  taf2
+
+	* rvices/workq/ffmpeg_job.cc: update with some basic code to open
+	  and close the video
+
+2009-01-19 16:21  taf2
+
+	* rvices/workq/configure, rvices/workq/ffmpeg_job.cc,
+	  rvices/workq/ffmpeg_job.h: add support for loading json data as
+	  params
+
+2009-01-19 16:05  taf2
+
+	* rvices/workq/config/jobs.yml: add ffmpeg
+
+2009-01-19 16:04  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/configure,
+	  rvices/workq/configure.ac, rvices/workq/ffmpeg_job.cc,
+	  rvices/workq/server.cc: fix linkage errors
+
+2009-01-19 15:33  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/config/jobs.yml,
+	  rvices/workq/configure, rvices/workq/configure.ac,
+	  rvices/workq/ffmpeg_job.cc, rvices/workq/ffmpeg_job.h,
+	  rvices/workq/flv_job.cc, rvices/workq/flv_job.h,
+	  rvices/workq/magick_job.cc, rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/tests/fixtures/sample.mov: * adding a sample video
+	  of me..
+	  * renaming flv job to ffmpeg job
+	  * fix a mysql cflags for tests
+	  * check for ffmpeg headers
+
+2009-01-17 20:43  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/config/jobs.yml,
+	  rvices/workq/configure, rvices/workq/configure.ac,
+	  rvices/workq/job.cc, rvices/workq/job.h,
+	  rvices/workq/magick_job.cc, rvices/workq/magick_job.h,
+	  rvices/workq/server.cc, rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/tests/magick_job_test.cc: dynamically load jobs
+
+2009-01-17 16:30  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/TODO,
+	  rvices/workq/adaptor.h, rvices/workq/config/jobs.yml,
+	  rvices/workq/configure, rvices/workq/job.cc, rvices/workq/job.h,
+	  rvices/workq/json/Makefile, rvices/workq/json/obj.cc,
+	  rvices/workq/magick_job.cc, rvices/workq/magick_job.h,
+	  rvices/workq/message.rb, rvices/workq/mysql_adaptor.cc,
+	  rvices/workq/mysql_adaptor.h, rvices/workq/server.cc,
+	  rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/tests/fixtures/jobs.yml,
+	  rvices/workq/tests/magick_job_test.cc,
+	  rvices/workq/tests/mock_sql_adaptor.cc,
+	  rvices/workq/tests/settings_test.cc,
+	  rvices/workq/tests/thumbnail_job_test.cc,
+	  rvices/workq/tests/work_queue_test.cc,
+	  rvices/workq/thumbnail_job.cc, rvices/workq/thumbnail_job.h,
+	  rvices/workq/worker.cc, rvices/workq/workq.cc: * move thumbnail
+	  job to magick job
+	  * implement image resizing
+
+2009-01-16 15:26  taf2
+
+	* rvices/workq/json/Makefile, rvices/workq/json/obj.cc: oh yes
+	  gobject type system rocks it!
+
+2009-01-16 03:18  taf2
+
+	* rvices/workq/thumbnail_job.h: need to provide job initialization
+
+2009-01-15 03:08  taf2
+
+	* rvices/workq/configure, rvices/workq/configure.ac: update
+	  including json-glib
+
+2009-01-14 20:33  taf2
+
+	* rvices/workq/json/Makefile, rvices/workq/json/json.cc: add
+	  debugging symbols
+	  make multiple parses, to verify memory is not being leaked
+
+2009-01-14 20:27  taf2
+
+	* rvices/workq/json/json.cc: not all compilers like the variables
+	  defined in case statments
+
+2009-01-14 20:25  taf2
+
+	* rvices/workq/job.cc: er, disable yaml here for now, going to
+	  switch this to json
+
+2009-01-14 20:24  taf2
+
+	* rvices/workq/job.cc, rvices/workq/json,
+	  rvices/workq/json/Makefile, rvices/workq/json/json.cc,
+	  rvices/workq/json/sample.json,
+	  rvices/workq/tests/mock_sql_adaptor.cc,
+	  rvices/workq/tests/thumbnail_job_test.cc: going to swap out data
+	  attributes as yaml in favor of json, it's just so much easier to
+	  use, will very likely keep yaml as the configuration language
+	  because it's easier to read...
+
+2009-01-14 18:26  taf2
+
+	* rvices/workq/TODO, rvices/workq/config/jobs.yml,
+	  rvices/workq/job.cc, rvices/workq/job.h, rvices/workq/message.rb,
+	  rvices/workq/server.cc, rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/tests/fixtures/jobs.yml,
+	  rvices/workq/tests/mock_adaptor_test.cc,
+	  rvices/workq/tests/work_queue_test.cc,
+	  rvices/workq/thumbnail_job.cc, rvices/workq/thumbnail_job.h,
+	  rvices/workq/util.cc, rvices/workq/util.h,
+	  rvices/workq/worker.cc, rvices/workq/workq.cc: * server can
+	  receive messages and process jobs
+
+2009-01-14 15:57  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/adaptor.h,
+	  rvices/workq/flv_job.cc, rvices/workq/flv_job.h,
+	  rvices/workq/job.cc, rvices/workq/job.h,
+	  rvices/workq/mysql_adaptor.cc, rvices/workq/mysql_adaptor.h,
+	  rvices/workq/tests/mock_adaptor_test.cc,
+	  rvices/workq/tests/mock_sql_adaptor.h,
+	  rvices/workq/tests/mysql_test.cc,
+	  rvices/workq/tests/thumbnail_job_test.cc,
+	  rvices/workq/tests/work_queue_test.cc,
+	  rvices/workq/thumbnail_job.cc, rvices/workq/thumbnail_job.h,
+	  rvices/workq/worker.cc, rvices/workq/worker.h: * starting to
+	  write a real job to create thumbnails
+	  * update the adaptor interface to use column names to get the
+	  column values instead of the column order
+
+2009-01-14 13:48  taf2
+
+	* rvices/workq/mysql_adaptor.h,
+	  rvices/workq/tests/fixtures/jobs.yml,
+	  rvices/workq/tests/fixtures/photo.jpg,
+	  rvices/workq/tests/mock_adaptor_test.cc,
+	  rvices/workq/tests/mock_sql_adaptor.cc,
+	  rvices/workq/tests/mock_sql_adaptor.h,
+	  rvices/workq/tests/work_queue_test.cc,
+	  rvices/workq/thumbnail_job.cc, rvices/workq/worker.cc: * adding
+	  the data field to pass work to a job
+	  * add macro for loading moch data easier
+
+2009-01-14 03:50  taf2
+
+	* rvices/workq/mysql_adaptor.cc,
+	  rvices/workq/tests/mock_adaptor_test.cc,
+	  rvices/workq/tests/work_queue_test.cc, rvices/workq/worker.cc:
+	  quiet down the tests
+
+2009-01-13 23:13  taf2
+
+	* rvices/workq/job.h, rvices/workq/mysql_adaptor.cc,
+	  rvices/workq/tests/mock_adaptor_test.cc,
+	  rvices/workq/tests/work_queue_test.cc, rvices/workq/worker.cc:
+	  use a transaction to lock down the work being processed
+
+2009-01-13 22:36  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/adaptor.h,
+	  rvices/workq/flv_job.cc, rvices/workq/flv_job.h,
+	  rvices/workq/job.cc, rvices/workq/job.h,
+	  rvices/workq/mysql_adaptor.cc, rvices/workq/mysql_adaptor.h,
+	  rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/tests/mock_adaptor_test.cc,
+	  rvices/workq/tests/mock_sql_adaptor.cc,
+	  rvices/workq/tests/mock_sql_adaptor.h,
+	  rvices/workq/tests/settings_test.cc,
+	  rvices/workq/tests/work_queue_test.cc,
+	  rvices/workq/tests/worker_test.cc, rvices/workq/thumbnail_job.cc,
+	  rvices/workq/thumbnail_job.h, rvices/workq/worker.cc: working job
+	  queue
+
+2009-01-13 19:17  jack
+
+	* rvices/workq/README: updates to README
+
+2009-01-13 18:16  taf2
+
+	* rvices/workq/configure: add configure script
+
+2009-01-12 03:21  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/adaptor.cc,
+	  rvices/workq/adaptor.h, rvices/workq/mysql_adaptor.cc,
+	  rvices/workq/mysql_adaptor.h, rvices/workq/tests/fixtures,
+	  rvices/workq/tests/fixtures/jobs.yml,
+	  rvices/workq/tests/mock_adaptor_test.cc,
+	  rvices/workq/tests/mock_sql_adaptor.cc,
+	  rvices/workq/tests/mock_sql_adaptor.h,
+	  rvices/workq/tests/mysql_test.cc, rvices/workq/tests/testlib.h,
+	  rvices/workq/tests/worker_test.cc, rvices/workq/worker.cc,
+	  rvices/workq/workq.cc: lots and lots of work, thought about
+	  mocking, now going fixtures
+
+2009-01-11 22:36  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/job.cc,
+	  rvices/workq/job.h, rvices/workq/mysql_adaptor.cc,
+	  rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/tests/mock_sql_adaptor.cc,
+	  rvices/workq/tests/mock_sql_adaptor.h,
+	  rvices/workq/tests/mysql_test.cc,
+	  rvices/workq/tests/settings_test.cc,
+	  rvices/workq/tests/worker_test.cc, rvices/workq/worker.cc,
+	  rvices/workq/worker.h: * factor job object code into it's own
+	  unit job.cc
+	  * add a job function creator and registry
+	  * layout initial interface framework for mocking sql adaptor
+
+2009-01-11 21:48  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/TODO,
+	  rvices/workq/config/jobs.yml, rvices/workq/configure.ac,
+	  rvices/workq/flv_job.cc, rvices/workq/flv_job.h,
+	  rvices/workq/job.h, rvices/workq/message.rb,
+	  rvices/workq/server.cc, rvices/workq/server.h,
+	  rvices/workq/tests/mysql_test.cc, rvices/workq/thumbnail.cc,
+	  rvices/workq/thumbnail.h, rvices/workq/thumbnail_job.cc,
+	  rvices/workq/thumbnail_job.h, rvices/workq/worker.cc,
+	  rvices/workq/worker.h, rvices/workq/workq.cc: * postfix jobs with
+	  _job
+	  * add support to detect ffmpeg libraries using pkg-config
+	  * correctly deference work queue pointers in schedule method
+	  worker.cc
+
+2009-01-11 21:43  taf2
+
+	* rvices/workq/tests/worker_test.cc, rvices/workq/worker.cc: update
+	  worker to respond faster
+
+2009-01-10 20:36  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/pstring.cc,
+	  rvices/workq/pstring.h, rvices/workq/tests/pstring_test.cc: add
+	  simple test for c++ gstring
+
+2009-01-10 20:18  taf2
+
+	* rvices/workq/tests/mysql_test.cc,
+	  rvices/workq/tests/worker_test.cc: free memory in config loading
+
+2009-01-10 20:15  taf2
+
+	* rvices/workq/config/jobs.yml, rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/tests/worker_test.cc, rvices/workq/worker.cc,
+	  rvices/workq/worker.h: updating worker timer resolution is in
+	  micro seconds not milli seconds
+	  add a test case, need to break things down into smaller parts for
+	  test...
+
+2009-01-10 19:30  taf2
+
+	* rvices/workq/worker.cc: 64 bit compat
+
+2009-01-10 19:21  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/README, rvices/workq/TODO,
+	  rvices/workq/adaptor.cc, rvices/workq/adaptor.h,
+	  rvices/workq/config/jobs.yml, rvices/workq/configure.ac,
+	  rvices/workq/tests/worker_test.cc, rvices/workq/worker.cc,
+	  rvices/workq/worker.h, rvices/workq/workq.cc: * work on worker
+	  implementation
+	  * revise README
+	  * add stub for worker test
+	  * add factory method for creating sql adapters
+
+2009-01-07 21:20  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/README,
+	  rvices/workq/config/jobs.yml, rvices/workq/server.cc,
+	  rvices/workq/server.h, rvices/workq/settings.cc,
+	  rvices/workq/settings.h, rvices/workq/test.cc,
+	  rvices/workq/tests, rvices/workq/tests/config,
+	  rvices/workq/tests/config/jobs.yml,
+	  rvices/workq/tests/mysql_test.cc,
+	  rvices/workq/tests/settings_test.cc,
+	  rvices/workq/tests/testlib.cc, rvices/workq/tests/testlib.h,
+	  rvices/workq/util.cc, rvices/workq/util.h,
+	  rvices/workq/worker.cc, rvices/workq/worker.h,
+	  rvices/workq/workq.cc, rvices/workq/workq.h: lots of updates
+	  before i left
+
+2009-01-04 23:00  taf2
+
+	* rvices/workq/settings.cc, rvices/workq/settings.h,
+	  rvices/workq/workq.cc: implement settings as a yaml parser with
+	  GData storage
+
+2009-01-03 19:56  taf2
+
+	* rvices/workq/config, rvices/workq/config/jobs.yml,
+	  rvices/workq/settings.cc, rvices/workq/settings.h,
+	  rvices/workq/thumbnail.cc, rvices/workq/worker.cc,
+	  rvices/workq/worker.h, rvices/workq/workq.h: implement settings
+
+2009-01-03 18:56  taf2
+
+	* rvices/workq/README: version
+
+2009-01-03 18:47  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/configure.ac,
+	  rvices/workq/m4, rvices/workq/m4/image_magick.m4,
+	  rvices/workq/m4/mysql_client.m4, rvices/workq/mysql_client.m4,
+	  rvices/workq/thumbnail.cc, rvices/workq/thumbnail.h,
+	  rvices/workq/worker.cc, rvices/workq/worker.h: start work on
+	  integrating imagemagick
+
+2009-01-03 04:21  taf2
+
+	* rvices/workq: ignore .libs
+
+2009-01-03 04:20  taf2
+
+	* rvices/workq/configure.ac, rvices/workq/test.cc: * use ac lang
+	  macro
+	  * test compatible with darwin
+
+2009-01-03 00:12  taf2
+
+	* rvices/workq/Makefile.am, rvices/workq/configure.ac,
+	  rvices/workq/pstring.cc, rvices/workq/pstring.h,
+	  rvices/workq/server.cc, rvices/workq/settings.cc,
+	  rvices/workq/settings.h, rvices/workq/workq.cc,
+	  rvices/workq/workq.h: adding a c++ wrapper for gstring
+
+2009-01-02 21:36  taf2
+
+	* rvices/workq/TODO, rvices/workq/server.cc,
+	  rvices/workq/worker.cc, rvices/workq/worker.h,
+	  rvices/workq/workq.cc, rvices/workq/workq.h: split out worker
+
+2009-01-02 21:27  taf2
+
+	* rvices/workq/test.cc: some memory profiling of glib components
+
+2009-01-02 19:37  taf2
+
+	* rvices/workq/AUTHORS, rvices/workq/TODO: docs
+
+2009-01-02 19:36  taf2
+
+	* rvices/workq/logs: ignore logswq
+
+2009-01-02 19:36  taf2
+
+	* rvices/workq/logs, rvices/workq/test.cc: move things into logs
+	  folder
+
+2009-01-02 19:34  taf2
+
+	* rvices/workq/adaptor.h, rvices/workq/mysql_adaptor.cc,
+	  rvices/workq/mysql_adaptor.h, rvices/workq/test.cc: implement
+	  iterator interface
+
+2009-01-02 18:36  taf2
+
+	* rvices/workq/adaptor.cc, rvices/workq/adaptor.h,
+	  rvices/workq/mysql_adaptor.h, rvices/workq/workq.h: create an
+	  adaptor header to separate things out
+
+2009-01-02 18:33  taf2
+
+	* rvices/workq: ignore
+
+2009-01-02 18:25  taf2
+
+	* rvices/workq/bootstrap.sh: check for both
+
+2009-01-02 18:19  taf2
+
+	* rvices/workq/Makefile, rvices/workq/Makefile.am,
+	  rvices/workq/TODO, rvices/workq/bootstrap.sh,
+	  rvices/workq/test.cc: run tests by default
+
+2009-01-02 16:05  taf2
+
+	* rvices/workq/AUTHORS, rvices/workq/ChangeLog, rvices/workq/NEWS,
+	  rvices/workq/TODO: adding misc files
+
+2009-01-02 16:04  taf2
+
+	* rvices/workq/mysql_client.m4: adding m4 for mysql
+
+2009-01-02 16:04  taf2
+
+	* rvices/workq/bootstrap.sh: adding bootstrap script
+
+2009-01-02 16:03  taf2
+
+	* rvices/workq/Makefile, rvices/workq/Makefile.am,
+	  rvices/workq/configure.ac, rvices/workq/mysql_adaptor.h,
+	  rvices/workq/workq.h: adding in autoconf - test case incompatible
+	  with mac osx will work on that next
+
+2009-01-01 22:08  taf2
+
+	* rvices/workq/Makefile, rvices/workq/logger.cc,
+	  rvices/workq/logger.h: add a logger class from siphon
+
+2009-01-01 19:10  taf2
+
+	* rvices/workq/README: add a deps list
+
+2009-01-01 18:54  taf2
+
+	* rvices/workq, rvices/workq/README: adding a README
+	  ignore binaries
+
+2009-01-01 17:49  taf2
+
+	* rvices/workq, rvices/workq/Makefile, rvices/workq/Makefile.am,
+	  rvices/workq/adaptor.cc, rvices/workq/configure.ac,
+	  rvices/workq/message.rb, rvices/workq/mysql_adaptor.cc,
+	  rvices/workq/mysql_adaptor.h, rvices/workq/server.cc,
+	  rvices/workq/test.cc, rvices/workq/worker.cc,
+	  rvices/workq/workq.cc, rvices/workq/workq.h: adding workq c++
+	  code
+

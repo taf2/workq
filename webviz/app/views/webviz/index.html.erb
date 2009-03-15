@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for job in @jobs do %>
+    <tr>
+      <td><a href="/job/<%= job.id %>"><%= job.name %></a></td>
+      <td><a href="/job/<%= job.id %>"><%= job.status %></a></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

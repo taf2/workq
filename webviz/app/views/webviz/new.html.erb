@@ -1,0 +1,79 @@
+<div class="span-13">
+  <form method="post" action="<%= url(:create_job) %>">
+    <fieldset>
+      <label for="job_type">Job Type</label>
+      <select id="job_type" name="job[type]">
+        <option value="magick">Magick</option>
+        <option value="run">Run</option>
+        <option value="lua">Lua</option>
+      </select>
+      <div class="clear"></div>
+      <label for="job_data">Job Data</label>
+      <textarea id="job_data" name="job[data]">
+      </textarea>
+      <div class="clear"></div>
+      <input type="submit" value="Create"/>
+    </fieldset>
+  </form>
+</div>
+<div class="span-10">
+  <h3>About</h3>
+  <p>
+    Job's can be created here directly.  The data field is typically used to pass a JSON structure to a new job.  This
+    can contain details about what the job should do.  Each job type has specific JSON fields that it will expect.
+  </p>
+  <h4>Job Fields</h4>
+  <ul>
+    <li>
+      <h5 style="margin:0">Magick</h5>
+      <ul>
+        <li><strong>original_filename</strong> - path to the original image</li>
+        <li><strong>modified_filename</strong> - path to the modified image, i.e. the result</li>
+        <li><strong>operation</strong> - what transformation to use (only supported is resize) </li>
+        <li><strong>rows</strong> - how many rows</li>
+        <li><strong>cols</strong> - how many cols</li>
+      </ul>
+      <h6>example</h6>
+      <strong>data</strong>
+<pre>
+{"original_filename":"tests/fixtures/photo.jpg",
+ "modified_filename":"tests/fixtures/photo-thumb.jpg",
+ "operation":"resize", "rows":64, "cols":64}
+</pre>
+
+    </li>
+    <li>
+      <h5 style="margin:0">Run</h5>
+      <ul>
+        <li><strong>command</strong> - command line to execute</li>
+      </ul>
+      <h6>example</h6>
+      <strong>data</strong>
+<pre>
+{"command":"touch tests/fixtures/simple.test"}
+</pre>
+    </li>
+    <li>
+      <h5 style="margin:0">Lua</h5>
+      <ul>
+        <li><strong>filename</strong> - A file path to the script to execute.</li>
+        <li>options - Any string of data you want to pass to the lua script</li>
+      </ul>
+      <h6>example</h6>
+<strong>data</strong>
+<pre>
+{"filename":"tests/fixtures/test1.lua","options":"message"}
+</pre>
+<strong>lua script</strong>, e.g. contents of the file located at filename
+<pre>
+function wq_execute(data)
+  print(data)
+  file = io.open("tests/fixtures/lua_ran.txt", "w")
+  file:write(os.date("%x"))
+  file:close()
+  return 1
+end
+</pre>
+    </li>
+  </ul>
+</div>

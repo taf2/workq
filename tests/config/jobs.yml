@@ -1,0 +1,23 @@
+development:
+  # database connection details
+  adapter: mysql
+  database: jobs_test
+  username: root
+  password: 
+  host: 127.0.0.1
+  port: 3306 
+  pool: 5 # number of open connections to pool
+
+  # worker configuration 
+  workers: 5
+  threads: 1
+  thread_sleep_time: 2000000 # how many microseconds to sleep 
+  execution_path: "./" # run the workers from this path, after forking the worker process will switch to the directory ./ will keep the work in the same directory as it's started
+  jobs: test
+  discard_unknown_jobs: true # when unknown job types are encountered a worker process will mark the job with a status of error, default is true
+
+  # server configuration
+  listen: 4488
+  pollrate: 10 # number of seconds to pause before polling
+  logfile: # path to log output
+  pidfile: # where to write a pidfile

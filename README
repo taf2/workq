@@ -1,0 +1,113 @@
+Worker Queue
+============
+
+Provides a framework for enabling execution of modular jobs from a typical web server.  The jobs are executed in one of 
+many configurable worker processes.  Work is assigned to each worker by a master process listening on a configured UDP
+port for new work.  Web servers can poll via HTTP a memcached stored progress value.
+
+The Job server is designed to run on any Unix system.
+It provides a pluggable architecture to support a multitude of jobs.  Jobs are stored in a database.  The server provides a
+generic database adapter allowing multiple database suites to be utilized.  Mysql/Postgres/Sqlite for example can all be supported.
+
+The server listens on a UDP port for jobs. Jobs are stored and synchronized by the database. 
+Multiple servers can be run to scale the queue.
+
+A signal server process spawns a configurable number of worker processes.  These worker processes communicate with the master server
+using Unix Signals, such as USR1 to indicate to the worker process it should check for more work. We may also use shared memory to
+aid the master process in selecting which worker to choose when new work messages are received allowing it to more intelligently balance
+work between multiple workers.
+
+The master process, while listening for UDP messages that indicate it should wake up a worker process, will also timeout periodically to
+poll the database for new work.  Given that UDP is an unreliable protocol, we need to check for new work periodically, as we 
+could miss a wake up message from a client.
+
+The worker's job is to wait for new work messages from the master process.  When that message is received, the worker process will
+wake up and check the database.  At the point of this checking, the worker updates the job record and sets the locked attribute and status
+to 'processing'. This prevents any other workers from attempting to handle this record.
+
+Jobs can communicate progress back to a web server using a shared memory system such as memcached.  For example, a video encoding
+job may take many minutes to process.  The job for this may run through a few steps once the file has been uploaded to the server.
+During the decoding/encoding process the worker can write to a memcached key, identified by the uploaded file database record. Then
+from the web application and XMLHttpRequest can be sent to the server to read from memcached using the key identifier to signal 
+progress to the user's browser.
+
+Dependencies
+============
+
+glib-2.0 gobject-2.0 gmodule-2.0 at least 2.10.0
+libyaml-0.1.1 -> previously libsyck?
+libev
+json-glib-1.0
+lua 5.1
+libavcodec libavformat libavutil
+mysql client api
+
+Mac OSX
+=======
+sudo port install ffmpeg +lame +libogg +vorbis +faac +faad +x264 +a52 +avfilter gtk2 ImageMagick lua libyaml mysql
+# get a cup of coffee... or make it 20 this is gonna be awhile
+wget http://folks.o-hand.com/~ebassi/sources/json-glib-0.6.2.tar.gz
+tar -zxf json-glib-0.6.2.tar.gz
+cd json-glib-0.6.2
+./configure --prefix=/usr/local && make
+sudo make install
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+
+Fedora Core
+===========
+# setup http://rpmfusion.org/
+yum install gcc automake autoconf libtool
+yum install ffmpeg-devel lame-devel libvorbis-devel libfaac-devel libfaad-devel libx264-devel liba52-devel gtk2-devel json-glib lua mysql-devel
+# one little manual task
+wget http://pyyaml.org/download/libyaml/yaml-0.1.2.tar.gz
+tar -zxf yaml-0.1.2.tar.gz
+cd yaml-0.1.2
+./configure --prefix=/usr/local && make
+sudo make install
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+
+
+Database
+========
+
+A database is queued to provide reliable job queueing.   The database stores a record providing details about which job to run.
+The record stores details about the job status as well as a lock flag. The record can also include some meta data for the worker.
+The meta data is serialized as YAML.
+
+The job table schema is the following:
+
+create_table :jobs, :force => true do |t|
+  t.string   :name,                          :null => false
+  t.text     :data
+  t.string   :status,                        :null => false
+  t.datetime :created_at
+  t.datetime :updated_at
+  t.integer  :duration
+  t.integer  :taskable_id
+  t.string   :taskable_type
+  t.text     :details
+  t.string   :locked_queue_id, :default => "", :null => false
+  t.integer  :attempts,        :default => 0,  :null => false
+end
+
+add_index :jobs, [:status, :locked_queue_id]
+
+name, is a symbolic name that tells the worker process what job to perform (e.g. thumbnail, flv, is_spam, etc...)
+data, is a meta data field encoded with YAML providing extra options to the worker.
+status, is a flag that indicates what state the job is currently in. The following states are available:
+  pending: the job has been created but no worker has started to work on it
+  processing: the job has been seleted for work by a worker and is in progress
+  completed: the job has completed successfully or without reported error
+  error: the job has been procesed but an error occurred and it could not be completed
+created_at, a timestamp saying when this job was first created
+updated_at, a timestamp saying when this job was last run
+duration, how long in seconds it took to complete the job, this only counts the time spent processing not pending to completion
+taskable_id and taskable_type, these fields provide a convient way of linking the job record to another record using an ORM such as ActiveRecord polymorphic associations
+details, provides details about what happened during the job run.
+locked, a flag to indicate the job is being processed 
+attempts, how many times this job has run
+
+The index on status and locked is created since the job queue workers will be selecting new jobs using a query such as:
+
+  select name, data from jobs where locked=0 and status != 'processing' and status != 'completed'
+

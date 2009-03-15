@@ -1,0 +1,34 @@
+Summary: Work Queue
+Name: @NAME@
+Version: @VER@
+Release: 0
+Copyright: LGPL
+Group: Server/Networking
+Source0: http://somewhere/Foobar/%{name}-%{version}.tar.gz
+URL: http://anerian.com
+BuildRoot: %{_tmppath}/%{name}-root
+Prefix: %{_prefix}
+
+%description
+Work Queue for handling long running tasks
+
+%prep
+%setup
+
+%build
+%configure
+make
+
+%install
+%makeinstall
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-,root,root)
+
+%doc AUTHORS BUGS COPYING INSTALL NEWS README
+
+%changelog
+

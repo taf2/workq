@@ -1,0 +1,58 @@
+development: 
+  # database connection details
+  adapter: mysql
+  database: jobs
+  username: root
+  password: 
+  host: 127.0.0.1
+  port: 3306 
+  pool: 5 # number of open connections to pool
+
+  # worker configuration 
+  workers: 2 # how many worker processes to start
+  threads: 4 # how many threads per worker to start
+  thread_sleep_time: 2000000 # how many microseconds to sleep 
+  execution_path: "/Users/taf2/work/anerian/services/workq/" # run the workers from this path, after forking the worker process will switch to the directory ./ will keep the work in the same directory as it's started
+  jobs: "magick, lua, run"
+  job_prefix: "modules"
+
+  # server configuration
+  listen: 4488
+  pollrate: 10 # number of seconds to pause before polling
+  #logfile: /Users/taf2/work/anerian/services/workq/logs/workq.log # path to log output
+  pidfile: /Users/taf2/work/anerian/services/workq/logs/workq.pid # where to write a pidfile
+  daemonize: no
+  # During periods of high load the server will miss work signals, this timeout is how the server can recover from those missed work signals.
+  # idle time out's are how frequently the server will poll new jobs in database in the absence of any incoming UDP messages
+  # the server will scale the timeout towards max_idle_timeout if a timeout finds no jobs.
+  # the timeout will reset to min_idle_timeout, if new job requests are received either over the UDP connection or during a timeout
+  # to keep the server responsive you can set a max_scheduled_per_idle, this way the server will never lock up while scheduling many
+  # jobs.
+  min_idle_timeout: 1.0 # smallest number of seconds to reduce the timeout too, Default is 5 seconds
+  max_idle_timeout: 600.0 # max number of seconds to scale back the timeout, Default is 60 seconds
+  max_scheduled_per_idle: 64 # each idle timeout how many jobs to schedule, the default is 64, set this value to -1 for no limit, but be warned this would probably be bad
+
+test:
+  # database connection details
+  adapter: mysql
+  database: jobs_test
+  username: root
+  password: 
+  host: 127.0.0.1
+  port: 3306 
+  pool: 5 # number of open connections to pool
+
+  # worker configuration 
+  workers: 5
+  threads: 1
+  thread_sleep_time: 2000000 # how many microseconds to sleep 
+  execution_path: "./" # run the workers from this path, after forking the worker process will switch to the directory ./ will keep the work in the same directory as it's started
+  jobs: test
+  discard_unknown_jobs: true # when unknown job types are encountered a worker process will mark the job with a status of error, default is true
+  daemonize: no
+
+  # server configuration
+  listen: 4488
+  pollrate: 10 # number of seconds to pause before polling
+  logfile: # path to log output
+  pidfile: # where to write a pidfile

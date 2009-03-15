@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: workq
+Description: Work Queue Core Library.
+Requires: 
+Version: @VERSION@
+Libs: -L${libdir} -lworkq
+Cflags: -I${includedir}/workq-1.0 -I${libdir}/workq-1.0/
