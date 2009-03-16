@@ -13,9 +13,7 @@ The server listens on a UDP port for jobs. Jobs are stored and synchronized by t
 Multiple servers can be run to scale the queue.
 
 A signal server process spawns a configurable number of worker processes.  These worker processes communicate with the master server
-using Unix Signals, such as USR1 to indicate to the worker process it should check for more work. We may also use shared memory to
-aid the master process in selecting which worker to choose when new work messages are received allowing it to more intelligently balance
-work between multiple workers.
+using a simple pipe to indicate when a worker process should check for more work. 
 
 The master process, while listening for UDP messages that indicate it should wake up a worker process, will also timeout periodically to
 poll the database for new work.  Given that UDP is an unreliable protocol, we need to check for new work periodically, as we 
@@ -38,13 +36,11 @@ glib-2.0 gobject-2.0 gmodule-2.0 at least 2.10.0
 libyaml-0.1.1 -> previously libsyck?
 libev
 json-glib-1.0
-lua 5.1
-libavcodec libavformat libavutil
 mysql client api
 
 Mac OSX
 =======
-sudo port install ffmpeg +lame +libogg +vorbis +faac +faad +x264 +a52 +avfilter gtk2 ImageMagick lua libyaml mysql
+sudo port install gtk2 ImageMagick libyaml mysql
 # get a cup of coffee... or make it 20 this is gonna be awhile
 wget http://folks.o-hand.com/~ebassi/sources/json-glib-0.6.2.tar.gz
 tar -zxf json-glib-0.6.2.tar.gz
@@ -57,7 +53,7 @@ Fedora Core
 ===========
 # setup http://rpmfusion.org/
 yum install gcc automake autoconf libtool
-yum install ffmpeg-devel lame-devel libvorbis-devel libfaac-devel libfaad-devel libx264-devel liba52-devel gtk2-devel json-glib lua mysql-devel
+yum install gtk2-devel json-glib lua mysql-devel
 # one little manual task
 wget http://pyyaml.org/download/libyaml/yaml-0.1.2.tar.gz
 tar -zxf yaml-0.1.2.tar.gz
@@ -70,7 +66,7 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 Database
 ========
 
-A database is queued to provide reliable job queueing.   The database stores a record providing details about which job to run.
+A database is used to provide reliable job queueing.   The database stores a record providing details about which job to run.
 The record stores details about the job status as well as a lock flag. The record can also include some meta data for the worker.
 The meta data is serialized as YAML.
 
